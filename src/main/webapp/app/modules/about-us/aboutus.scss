@@ -13,6 +13,18 @@ html {
   box-sizing: inherit;
 }
 
+.anthonyText,
+.treyText,
+.chazText,
+.aliText,
+.michaelText {
+  color: white;
+}
+
+.flname {
+  color: white;
+}
+
 .column {
   float: left;
   width: 33.3%;
@@ -57,7 +69,7 @@ html {
 }
 
 .title {
-  color: grey;
+  color: white;
 }
 
 .button {
@@ -70,6 +82,9 @@ html {
   text-align: center;
   cursor: pointer;
   width: 50%;
+  padding: 15px 40px;
+  outline: 2px solid white;
+  outline-offset: 2px;
 }
 
 .button:hover {
@@ -113,4 +128,14 @@ p {
   padding: 10px 20px;
   margin-right: 10px;
   cursor: pointer;
+}
+
+.treyspace {
+  padding-bottom: 25px;
+}
+.chazspace {
+  padding-bottom: 72px;
+}
+.michaelspace {
+  padding-bottom: 23px;
 }
