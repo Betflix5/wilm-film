@@ -2,8 +2,9 @@ import './commentSection.scss';
 
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import Likebutton from './likes/likebutton';
+import app from 'app/app';
 
 interface Comment {
   id: string;
@@ -13,30 +14,54 @@ interface Comment {
   video: string;
 }
 
-function CommentSection() {
+// interface CommentUserProfile {
+//   currentUser: string;
+// }
+
+interface CommentSectionProps {
+  videoId?: string;
+}
+
+function CommentSection({ videoId }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [commentBody, setCommentBody] = useState('');
-
   const { id } = useParams<{ id: string }>();
-
-  useEffect(() => {
-    fetchComments();
-  }, []);
+  // const [movieID, setMovieID] = useState('');
 
   const fetchComments = async () => {
     try {
-      const response = await fetch('/api/comments');
+      console.log('parseInt: ' + videoId);
+      // const myVideoId: bigint = 1111873n;
+      const response = await fetch(`/api/comments/comment-by-video/${videoId}?videoId=` + videoId);
       if (!response.ok) {
         throw new Error('Failed to fetch comments');
       }
       const data = await response.json();
       setComments(data);
+      console.log(data);
+      console.log(comments);
+      console.log('/api/comments/comment-by-video/' + videoId);
     } catch (error) {
       console.error('Error fetching comments', error);
     }
   };
 
+  useEffect(() => {
+    console.log('words and stuff' + currentUser.id + currentUser.login);
+    fetchComments();
+  }, [id]);
+
   const currentUser = useSelector((state: any) => state.authentication.account);
+
+  // const UserProfile = () => {
+  //   const [user, setUser] = useState(null);
+  //
+
+  // }
+
+  console.log('PPPP' + currentUser.login);
+  const location = useLocation();
+  // const isMoviePage = location.pathname.startsWith('/movie/653346');
 
   const submitComment = async () => {
     try {
@@ -48,7 +73,7 @@ function CommentSection() {
         body: JSON.stringify({
           text: commentBody,
           postedAt: new Date().toISOString(),
-          author: { id: currentUser.id, login: currentUser.login },
+          author: { id: currentUser.id },
           video: { id },
         }),
       });
@@ -64,6 +89,7 @@ function CommentSection() {
       console.error('Error submitting comment', error);
     }
   };
+  console.log('this is my: ', currentUser.Login);
 
   return (
     <div>

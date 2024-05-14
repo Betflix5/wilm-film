@@ -26,18 +26,15 @@ const Footer = ({ isAuthenticated }: IFooterProps) => {
           <a href="/aboutus">
             <line>About Us</line>
           </a>
-          <a href="#">
-            <line>Have Questions?</line>
-          </a>
           <a href="/login">
             <line>Watch Now</line>
+          </a>
+          <a href="/account/settings">
+            <line>Account</line>
           </a>
         </div>
         {!isAuthenticated && (
           <div className="link-container">
-            <a href="#/account">
-              <line>Account</line>
-            </a>
             <a href="/account/register">
               <line>Register</line>
             </a>

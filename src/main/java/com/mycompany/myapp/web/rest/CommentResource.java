@@ -1,5 +1,6 @@
 package com.mycompany.myapp.web.rest;
 
+import com.mycompany.myapp.domain.Comment;
 import com.mycompany.myapp.repository.CommentRepository;
 import com.mycompany.myapp.service.CommentService;
 import com.mycompany.myapp.service.dto.CommentDTO;
@@ -64,6 +65,12 @@ public class CommentResource {
         return ResponseEntity.created(new URI("/api/comments/" + commentDTO.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, commentDTO.getId().toString()))
             .body(commentDTO);
+    }
+
+    @GetMapping("/comment-by-video/{videoId}")
+    public ResponseEntity<List<Comment>> getCommentsByVideoId(@RequestParam(value = "videoId", required = false) Long videoId) {
+        log.debug("REST request to get comments by videoId : {}", videoId);
+        return commentService.findCommentsByVideoId(videoId);
     }
 
     /**

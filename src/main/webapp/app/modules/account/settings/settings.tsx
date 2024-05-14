@@ -38,13 +38,13 @@ export const SettingsPage = () => {
   };
 
   return (
-    <div className="hip">
+    <div className="hipster">
       <div className="settings-box">
         <Row className="justify-content-center">
           <Col md="8">
             <h2 id="settings-title" className="white">
               <Translate contentKey="settings.title" interpolate={{ username: account.login }}>
-                User settings for {account.login}
+                User Settings For {account.login}
               </Translate>
             </h2>
             <ValidatedForm id="settings-form" onSubmit={handleValidSubmit} defaultValues={account}>

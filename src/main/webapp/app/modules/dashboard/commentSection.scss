@@ -4,7 +4,7 @@
   border: solid 1px #ffffff;
   color: white;
   // border-radius: 20%;
-  font-size: 19.5px;
+  font-size: 20px;
   height: 4vh;
   border-top-right-radius: 20%;
   border-bottom-right-radius: 20%;
@@ -14,7 +14,7 @@
   background-color: rgb(0, 0, 0);
   border: solid 1px #ffffff;
   color: rgb(255, 0, 0);
-  font-size: 19.5px;
+  font-size: 20px;
   height: 4vh;
   border-top-right-radius: 20%;
   border-bottom-right-radius: 20%;
@@ -24,10 +24,11 @@
   position: relative;
   display: table;
   padding: 8px 12px;
-  margin: 4px;
+  margin: 15px;
   background-color: #ffffff;
   border-radius: 18px;
-  font-size: 14px;
+  font-weight: bold;
+  font-size: 20px;
   line-height: 1.4;
   border: 1px solid #fd0000;
   color: #000000;
@@ -57,13 +58,13 @@
 }
 
 .comment-input {
-  margin-top: 65px;
+  margin-top: 80px;
   border: 1px solid #ff0000;
   background-color: rgb(255, 255, 255);
   width: 14vw;
   height: 4vh;
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 21px;
   border-top-left-radius: 10px 10px;
   border-bottom-left-radius: 10px 10px;
 }

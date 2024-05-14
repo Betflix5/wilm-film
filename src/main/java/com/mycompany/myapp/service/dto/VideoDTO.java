@@ -1,7 +1,10 @@
 package com.mycompany.myapp.service.dto;
 
+import com.mycompany.myapp.domain.Comment;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A DTO for the {@link com.mycompany.myapp.domain.Video} entity.
@@ -16,6 +19,8 @@ public class VideoDTO implements Serializable {
     private VideoMetaDataDTO metaData;
 
     private UserDTO uploader;
+
+    private Set<Comment> comments;
 
     public Long getId() {
         return id;
@@ -79,5 +84,13 @@ public class VideoDTO implements Serializable {
             ", metaData=" + getMetaData() +
             ", uploader=" + getUploader() +
             "}";
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

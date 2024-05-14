@@ -51,7 +51,7 @@ const Movie = () => {
               allowFullScreen
             ></iframe>
             <span className="comment-section">
-              <CommentSection />
+              <CommentSection videoId={selectedMovie.id} />
             </span>
           </span>
         </div>

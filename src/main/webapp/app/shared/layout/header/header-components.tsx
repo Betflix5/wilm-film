@@ -16,10 +16,7 @@ export const BrandIcon = props => (
 export const Brand = () => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
     <BrandIcon />
-    {/* <span className="brand-title">
-      <Translate contentKey="global.title" >WilmFilm</Translate>
-    </span> */}
-    {/* <span className="navbar-version">{VERSION.toLowerCase().startsWith('v') ? VERSION : `v${VERSION}`}</span> */}
+    <img src="/content/images/WilmFilm.png" style={{ height: '60px', width: '60px' }}></img>
   </NavbarBrand>
 );
 

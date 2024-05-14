@@ -1,3 +1,5 @@
+import './likebutton.scss';
+
 import React, { useEffect, useState } from 'react';
 import { AiFillLike, AiFillDislike } from 'react-icons/ai';
 import { countLikes, createLike } from './likeservice'; // Ensure the path is correct based on your project structure
@@ -17,6 +19,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ userId, videoId }) => {
         const response = await countLikes(videoId);
         setLikeCount(response.data);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log('Error fetching like count:', error);
       }
     };
@@ -24,6 +27,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ userId, videoId }) => {
   }, [userId, videoId]);
 
   const handleClick = async () => {
+    // eslint-disable-next-line no-console
     console.log('Button clicked'); // Debugging log
     if (!liked) {
       try {
@@ -32,6 +36,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ userId, videoId }) => {
         await createLike(like);
         setLiked(true);
         setLikeCount(likeCount + 1);
+        // eslint-disable-next-line no-console
         console.log('Like created'); // Debugging log
       } catch (error) {
         console.error('Error liking the video:', error);
@@ -40,14 +45,14 @@ const LikeButton: React.FC<LikeButtonProps> = ({ userId, videoId }) => {
   };
 
   return (
-    <>
-      <button onClick={handleClick} style={{ border: 'none', background: 'none' }}>
-        {liked ? <AiFillLike color="blue" size="50" /> : <AiFillDislike color="red" size="50" />}
-      </button>
-      <p>
-        {likeCount} {likeCount === 1 ? 'like' : 'likes'}
-      </p>
-    </>
+    <span className="like-counter">
+      {likeCount} {likeCount === 1 ? 'like' : 'likes'}
+      <div>
+        <button onClick={handleClick} style={{ border: 'none', background: 'none', marginLeft: '272px' }}>
+          {liked ? <AiFillLike color="blue" size="50" /> : <AiFillDislike color="red" size="50" />}
+        </button>
+      </div>
+    </span>
   );
 };
 
