@@ -5,13 +5,17 @@ import com.mycompany.myapp.repository.CommentRepository;
 import com.mycompany.myapp.service.CommentService;
 import com.mycompany.myapp.service.dto.CommentDTO;
 import com.mycompany.myapp.service.mapper.CommentMapper;
+import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.MultiValueMap;
 
 /**
  * Service Implementation for managing {@link com.mycompany.myapp.domain.Comment}.
@@ -80,5 +84,10 @@ public class CommentServiceImpl implements CommentService {
     public void delete(Long id) {
         log.debug("Request to delete Comment : {}", id);
         commentRepository.deleteById(id);
+    }
+
+    @Override
+    public ResponseEntity<List<Comment>> findCommentsByVideoId(Long videoId) {
+        return new ResponseEntity<List<Comment>>(commentRepository.findCommentsByVideoId(videoId), HttpStatus.OK);
     }
 }

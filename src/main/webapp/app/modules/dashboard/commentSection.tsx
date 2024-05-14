@@ -2,41 +2,55 @@ import './commentSection.scss';
 
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import Likebutton from './likes/likebutton';
+import app from 'app/app';
 
 interface Comment {
   id: string;
   text: string;
   posted_at: string;
   author: string;
+  login: string;
   video: string;
 }
 
-function CommentSection() {
+interface CommentSectionProps {
+  videoId?: string;
+}
+
+function CommentSection({ videoId }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [commentBody, setCommentBody] = useState('');
-
   const { id } = useParams<{ id: string }>();
-
-  useEffect(() => {
-    fetchComments();
-  }, []);
+  // const [movieID, setMovieID] = useState('');
 
   const fetchComments = async () => {
     try {
-      const response = await fetch('/api/comments');
+      console.log('parseInt: ' + videoId);
+      // const myVideoId: bigint = 1111873n;
+      const response = await fetch(`/api/comments/comment-by-video/${videoId}?videoId=` + videoId);
       if (!response.ok) {
         throw new Error('Failed to fetch comments');
       }
       const data = await response.json();
       setComments(data);
+      console.log(data);
+      console.log(comments);
+      console.log('/api/comments/comment-by-video/' + videoId);
     } catch (error) {
       console.error('Error fetching comments', error);
     }
   };
 
+  useEffect(() => {
+    console.log('this is' + id);
+    fetchComments();
+  }, [id]);
+
   const currentUser = useSelector((state: any) => state.authentication.account);
+  const location = useLocation();
+  // const isMoviePage = location.pathname.startsWith('/movie/653346');
 
   const submitComment = async () => {
     try {
@@ -64,6 +78,7 @@ function CommentSection() {
       console.error('Error submitting comment', error);
     }
   };
+  console.log('this is my: ', currentUser.Login);
 
   return (
     <div>
@@ -80,7 +95,7 @@ function CommentSection() {
       <div>
         {comments.map(comment => (
           <div className="comments" key={comment.id}>
-            {comment.text}
+            <strong>{currentUser.login}</strong>: {comment.text}
           </div>
         ))}
       </div>

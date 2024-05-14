@@ -20,6 +20,7 @@ import Dashboard from './modules/dashboard/dashboard'; // Corrected import
 import Movie from './modules/dashboard/movie'; // Corrected import
 import App from './app';
 import AboutUs from './modules/about-us/aboutus';
+import CommentSection from 'app/modules/dashboard/commentSection';
 
 const loading = <div>loading ...</div>;
 
@@ -43,6 +44,7 @@ const AppRoutes = () => {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="/movie/:id" element={<Movie />} />
         <Route path="aboutUs" element={<AboutUs />} />
+        {/* <Route path= "/commentSection" element={<CommentSection />} /> */}
         {/* <Route path="contactUs" element={<ContactUs />} />*/}
         <Route path="account">
           <Route

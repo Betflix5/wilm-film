@@ -1,9 +1,12 @@
 package com.mycompany.myapp.service;
 
+import com.mycompany.myapp.domain.Comment;
 import com.mycompany.myapp.service.dto.CommentDTO;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 
 /**
  * Service Interface for managing {@link com.mycompany.myapp.domain.Comment}.
@@ -55,4 +58,6 @@ public interface CommentService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    ResponseEntity<List<Comment>> findCommentsByVideoId(Long videoId);
 }

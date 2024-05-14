@@ -3,6 +3,10 @@ package com.mycompany.myapp.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -25,6 +29,10 @@ public class Video implements Serializable {
     @Column(name = "url")
     private String url;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "video")
+    @JsonIgnoreProperties(value = "video", allowSetters = true)
+    private Set<Comment> comments = new HashSet<>();
+
     @JsonIgnoreProperties(value = { "video" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
@@ -34,6 +42,37 @@ public class Video implements Serializable {
     private User uploader;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public Video comments(Set<Comment> comments) {
+        this.setComments(comments);
+        return this;
+    }
+
+    public Video addComments(Comment comment) {
+        this.comments.add(comment);
+        comment.setVideo(this);
+        return this;
+    }
+
+    public Video removeComments(Comment comment) {
+        this.comments.remove(comment);
+        comment.setVideo(null);
+        return this;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        if (this.comments != null) {
+            this.comments.forEach(comment -> comment.setVideo(this));
+        }
+        if (comments != null) {
+            comments.forEach(comment -> comment.setVideo(null));
+        }
+        this.comments = comments;
+    }
 
     public Long getId() {
         return this.id;
