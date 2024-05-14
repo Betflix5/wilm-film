@@ -11,9 +11,12 @@ interface Comment {
   text: string;
   posted_at: string;
   author: string;
-  login: string;
   video: string;
 }
+
+// interface CommentUserProfile {
+//   currentUser: string;
+// }
 
 interface CommentSectionProps {
   videoId?: string;
@@ -44,11 +47,19 @@ function CommentSection({ videoId }: CommentSectionProps) {
   };
 
   useEffect(() => {
-    console.log('this is' + id);
+    console.log('words and stuff' + currentUser.id + currentUser.login);
     fetchComments();
   }, [id]);
 
   const currentUser = useSelector((state: any) => state.authentication.account);
+
+  // const UserProfile = () => {
+  //   const [user, setUser] = useState(null);
+  //
+
+  // }
+
+  console.log('PPPP' + currentUser.login);
   const location = useLocation();
   // const isMoviePage = location.pathname.startsWith('/movie/653346');
 
@@ -62,7 +73,7 @@ function CommentSection({ videoId }: CommentSectionProps) {
         body: JSON.stringify({
           text: commentBody,
           postedAt: new Date().toISOString(),
-          author: { id: currentUser.id, login: currentUser.login },
+          author: { id: currentUser.id },
           video: { id },
         }),
       });
@@ -95,7 +106,7 @@ function CommentSection({ videoId }: CommentSectionProps) {
       <div>
         {comments.map(comment => (
           <div className="comments" key={comment.id}>
-            <strong>{currentUser.login}</strong>: {comment.text}
+            {comment.text}
           </div>
         ))}
       </div>

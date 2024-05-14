@@ -1,6 +1,7 @@
 .settings-box {
   height: 600px;
   width: 700px;
+  color: white;
   background-image: linear-gradient(
     to right,
     rgba(103, 35, 35, 0.789),
@@ -26,7 +27,6 @@
 }
 
 .hipster {
-  margin-top: 3%;
   overflow: hidden;
   position: relative;
   width: 100vw;
@@ -40,6 +40,7 @@
 }
 
 .hip {
+  margin-top: -70px;
   overflow: hidden;
   position: relative;
   width: 100vw;
@@ -113,4 +114,8 @@
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
   }
+}
+
+.white-text {
+  color: white;
 }

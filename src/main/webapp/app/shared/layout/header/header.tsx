@@ -57,11 +57,11 @@ const Header = (props: IHeaderProps) => {
               <AdminMenu showOpenAPI={props.isOpenAPIEnabled} showDatabase={!props.isInProduction} />
             )}
             <AccountMenu isAuthenticated={props.isAuthenticated} />
-            {props.isAuthenticated && isHomePage && (
-              <Link to="/Dashboard" className="nav-link">
-                <button className="button-design">Movies</button>
-              </Link>
-            )}
+            {/* {isHomePage && ( */}
+            <Link to="/Dashboard" className="nav-link">
+              <button className="button-design">Movies</button>
+            </Link>
+            {/* )} */}
             {isMoviePage && (
               <Link to="/Dashboard" className="nav-link">
                 <BrandIcon />

@@ -42,7 +42,6 @@ const AppRoutes = () => {
         <Route path="login" element={<Login />} />
         <Route path="logout" element={<Logout />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="/movie/:id" element={<Movie />} />
         <Route path="aboutUs" element={<AboutUs />} />
         {/* <Route path= "/commentSection" element={<CommentSection />} /> */}
         {/* <Route path="contactUs" element={<ContactUs />} />*/}
@@ -75,6 +74,14 @@ const AppRoutes = () => {
           element={
             <PrivateRoute hasAnyAuthorities={[AUTHORITIES.ADMIN]}>
               <EntitiesRoutes />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/movie/:id"
+          element={
+            <PrivateRoute hasAnyAuthorities={[AUTHORITIES.USER, AUTHORITIES.ADMIN]}>
+              <Movie />
             </PrivateRoute>
           }
         />

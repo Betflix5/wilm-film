@@ -29,17 +29,17 @@ const Dashboard: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchMainMovie(550);
+    fetchMainMovie(967847);
 
     const categoryUrls: Category[] = [
       { title: 'Upcoming', url: `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1` },
       { title: 'Popular', url: `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1` },
-      { title: 'Action', url: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=28` },
-      { title: 'Comedy', url: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=35` },
       {
         title: 'Horror',
         url: `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=horror&page=1&include_adult=false`,
       },
+      { title: 'Comedy', url: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=35` },
+      { title: 'Action', url: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=28` },
       { title: 'Romance', url: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=10749` },
       { title: 'Sci-Fi', url: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=878` },
       { title: 'Thriller', url: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=53` },
