@@ -43,6 +43,7 @@ const AppRoutes = () => {
         <Route path="logout" element={<Logout />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="aboutUs" element={<AboutUs />} />
+        <Route path="/movie/:id" element={<Movie />} />
         {/* <Route path= "/commentSection" element={<CommentSection />} /> */}
         {/* <Route path="contactUs" element={<ContactUs />} />*/}
         <Route path="account">
@@ -77,14 +78,14 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/movie/:id"
-          element={
-            <PrivateRoute hasAnyAuthorities={[AUTHORITIES.USER, AUTHORITIES.ADMIN]}>
-              <Movie />
-            </PrivateRoute>
-          }
-        />
+        {/*<Route*/}
+        {/*  path="/movie/:id"*/}
+        {/*  element={*/}
+        {/*    <PrivateRoute hasAnyAuthorities={[AUTHORITIES.USER, AUTHORITIES.ADMIN]}>*/}
+        {/*      <Movie />*/}
+        {/*    </PrivateRoute>*/}
+        {/*  }*/}
+        {/*/>*/}
         <Route path="*" element={<PageNotFound />} />
       </ErrorBoundaryRoutes>
     </div>
