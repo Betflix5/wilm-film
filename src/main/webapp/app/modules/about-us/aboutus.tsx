@@ -128,7 +128,7 @@ const AboutUs = () => {
               <p className="title">Software Developer</p>
               {/*<p className="michaelText">*/}
               {/*  Passionate about transitioning into a role as a Software Engineer, leveraging my background in Electronic Engineering and*/}
-              {/*  customer service experiencee to drive innovative solutions and enhance user experiences.*/}
+              {/*  customer service experienceee to drive innovative solutions and enhance user experiences.*/}
               {/*</p>*/}
               <div className="michaelspace"></div>
               <p>
