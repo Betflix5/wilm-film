@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router';
 import Likebutton from './likes/likebutton';
 import app from 'app/app';
+import Comment from 'app/entities/comment/comment';
 
 interface Comment {
   id: string;
@@ -28,26 +29,22 @@ function CommentSection({ videoId }: CommentSectionProps) {
   const { id } = useParams<{ id: string }>();
   // const [movieID, setMovieID] = useState('');
 
-  const fetchComments = async () => {
+  const fetchComments = async (): Promise<void> => {
     try {
-      console.log('parseInt: ' + videoId);
       // const myVideoId: bigint = 1111873n;
-      const response = await fetch(`/api/comments/comment-by-video/${videoId}?videoId=` + videoId);
+      const response = await fetch(`/api/comments/comment-by-video/${id}?videoId=` + id);
       if (!response.ok) {
         throw new Error('Failed to fetch comments');
       }
       const data = await response.json();
       setComments(data);
-      console.log(data);
-      console.log(comments);
-      console.log('/api/comments/comment-by-video/' + videoId);
     } catch (error) {
       console.error('Error fetching comments', error);
     }
   };
 
   useEffect(() => {
-    console.log('words and stuff' + currentUser.id + currentUser.login);
+    console.log('this is: ', id);
     fetchComments();
   }, [id]);
 
@@ -58,8 +55,6 @@ function CommentSection({ videoId }: CommentSectionProps) {
   //
 
   // }
-
-  console.log('PPPP' + currentUser.login);
   const location = useLocation();
   // const isMoviePage = location.pathname.startsWith('/movie/653346');
 
@@ -89,7 +84,6 @@ function CommentSection({ videoId }: CommentSectionProps) {
       console.error('Error submitting comment', error);
     }
   };
-  console.log('this is my: ', currentUser.Login);
 
   return (
     <div>
