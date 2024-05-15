@@ -15,8 +15,8 @@ export const BrandIcon = props => (
 
 export const Brand = () => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
+    <img src="/content/images/WilmFilm.png" style={{ height: '60px', width: '60px', marginLeft: '6rem' }}></img>
     <BrandIcon />
-    <img src="/content/images/WilmFilm.png" style={{ height: '60px', width: '60px' }}></img>
   </NavbarBrand>
 );
 

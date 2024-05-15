@@ -38,8 +38,7 @@ const Header = (props: IHeaderProps) => {
   const location = useLocation();
 
   const isMoviePage = location.pathname.startsWith('/movie/');
-
-  const isHomePage = location.pathname === '/';
+  const isDashBoard = location.pathname.startsWith('/Dashboard');
 
   /* jhipster-needle-add-element-to-menu - JHipster will add new menu items here */
 
@@ -57,11 +56,11 @@ const Header = (props: IHeaderProps) => {
               <AdminMenu showOpenAPI={props.isOpenAPIEnabled} showDatabase={!props.isInProduction} />
             )}
             <AccountMenu isAuthenticated={props.isAuthenticated} />
-            {/* {isHomePage && ( */}
-            <Link to="/Dashboard" className="nav-link">
-              <button className="button-design">Movies</button>
-            </Link>
-            {/* )} */}
+            {!isDashBoard && !isMoviePage && (
+              <Link to="/Dashboard" className="nav-link">
+                <button className="button-design">Movies</button>
+              </Link>
+            )}
             {isMoviePage && (
               <Link to="/Dashboard" className="nav-link">
                 <BrandIcon />

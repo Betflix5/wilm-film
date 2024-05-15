@@ -36,7 +36,7 @@ export const App = () => {
   const paddingTop = '60px';
   return (
     <BrowserRouter basename={baseHref}>
-      <ToastContainer position="top-left" className="toastify-container" toastClassName="toastify-toast" />
+      {/* <ToastContainer position="top-left" className="toastify-container" toastClassName="toastify-toast" /> */}
       <ErrorBoundary>
         <Header
           isAuthenticated={isAuthenticated}
