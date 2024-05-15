@@ -200,7 +200,8 @@ jhipster:
     license: unlicensed
     license-url:
   security:
-    content-security-policy: "default-src 'self'; frame-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; img-src 'self' https://image.tmdb.org data:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://api.themoviedb.org; connect-src 'self' http://localhost:8313/api/videos;"
+    content-security-policy: "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';"
+#    content-security-policy: "default-src 'self'; frame-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; img-src 'self' https://image.tmdb.org data:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://api.themoviedb.org; connect-src 'self' http://localhost:8313/api/videos;"
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
