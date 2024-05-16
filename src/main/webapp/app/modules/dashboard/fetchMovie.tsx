@@ -1,5 +1,5 @@
 const FetchMovies = async () => {
-  const url = 'http://localhost:8080/api/videos';
+  const url = 'http://localhost:8313/api/videos';
   //INSERT TOKEN HERE BUT DONT FORGET TO REMOVE IT BEFORE MERGING
   const token = '';
 
